@@ -2,7 +2,7 @@
   "name": "@skylib/quasar-framework",
   "version": "0.1.0",
   "private": false,
-  "description": "Typescript functions",
+  "description": "Quasar framework",
   "keywords": [
     "framework",
     "quasar"
