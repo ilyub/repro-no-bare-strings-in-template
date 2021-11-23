@@ -20,7 +20,6 @@
   "publisher": "ilyub",
   "scripts": {
     "browserslist": "browserslist",
-    "build": "quasar build",
     "build-doc": "typedoc src",
     "commitlint": "commitlint --edit",
     "commitlint-all": "commitlint --config commitlint-all.config.js --from=",
