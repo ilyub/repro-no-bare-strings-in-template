@@ -1,5 +1,4 @@
 <script lang="ts">
-import gb from "flag-icon-css/flags/1x1/gb.svg";
 import ru from "flag-icon-css/flags/1x1/ru.svg";
 import us from "flag-icon-css/flags/1x1/us.svg";
 import { defineComponent, provide, ref } from "vue";
@@ -34,11 +33,6 @@ export default defineComponent({
         caption: "English (USA)",
         flag: us,
         lang: "en-US"
-      },
-      {
-        caption: "English (UK)",
-        flag: gb,
-        lang: "en-GB"
       },
       {
         caption: "Russian",

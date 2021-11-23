@@ -23,11 +23,6 @@ it("LanguagePicker", () => {
             lang: "en-US"
           },
           {
-            caption: "English (UK)",
-            flag: "gb-flag",
-            lang: "en-GB"
-          },
-          {
             caption: "Russian",
             flag: "ru-flag",
             lang: "ru-RU"
