@@ -2,7 +2,7 @@ module.exports = {
   extends: [require.resolve("@skylib/config/src/eslintrc")],
   overrides: [
     {
-      files: ["./src/App.vue", "./src/router/index.ts"],
+      files: ["./src/App.ts", "./src/App.vue", "./src/router/index.ts"],
       rules: {
         "import/no-extraneous-dependencies": [
           "warn",

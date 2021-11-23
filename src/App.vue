@@ -4,6 +4,10 @@ import us from "flag-icon-css/flags/1x1/us.svg";
 import { defineComponent, provide, ref } from "vue";
 import { mdiAccount, mdiClose, mdiPen } from "@mdi/js";
 
+import type { LocaleName } from "@skylib/functions/es/types/locales";
+
+// eslint-disable-next-line import/no-unassigned-import
+import "./App.ts";
 import {
   injectChangeLanguageAction,
   injectLanguagePickerItems
@@ -22,7 +26,7 @@ export default defineComponent({
     "x-tooltip": Tooltip
   },
   setup() {
-    const language = ref("en-US");
+    const language = ref<LocaleName>("en-US");
 
     provide(injectChangeLanguageAction, lang => {
       language.value = lang;
