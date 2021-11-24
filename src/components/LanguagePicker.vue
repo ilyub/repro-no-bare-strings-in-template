@@ -36,9 +36,9 @@ export default defineComponent({
 
         return item;
       }),
-      changeLanguage(lang: unknown): void {
+      changeLanguage(newLanguage: unknown): void {
         const item = languagePickerItems.find(
-          candidate => candidate.lang === lang
+          candidate => candidate.lang === newLanguage
         );
 
         assert.not.empty(item);

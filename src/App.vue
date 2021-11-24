@@ -1,4 +1,6 @@
 <script lang="ts">
+import "typeface-roboto-multilang/cyrillic.css";
+import "typeface-roboto-multilang/latin-ext.css";
 import ru from "flag-icon-css/flags/1x1/ru.svg";
 import us from "flag-icon-css/flags/1x1/us.svg";
 import { defineComponent, provide, ref } from "vue";

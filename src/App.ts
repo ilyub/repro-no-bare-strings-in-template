@@ -1,5 +1,4 @@
-import "typeface-roboto-multilang/cyrillic.css";
-import "typeface-roboto-multilang/latin-ext.css";
+export {};
 
 declare global {
   namespace configurable {
