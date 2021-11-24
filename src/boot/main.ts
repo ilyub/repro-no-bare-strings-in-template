@@ -1,4 +1,4 @@
-export {};
+import { boot } from "quasar/wrappers";
 
 declare global {
   namespace configurable {
@@ -8,3 +8,6 @@ declare global {
     }
   }
 }
+
+// eslint-disable-next-line import/no-default-export
+export default boot(() => {});

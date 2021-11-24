@@ -3,7 +3,7 @@ const { configure } = require("quasar/wrappers");
 module.exports = configure(ctx => {
   return {
     animations: [],
-    boot: [],
+    boot: ["main"],
     build: {
       analyze: true,
       chainWebpack() {
