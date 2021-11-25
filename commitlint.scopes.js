@@ -1,1 +1,1 @@
-module.exports = ["boot"];
+module.exports = ["NavButton", "Tooltip", "boot"];

@@ -4,7 +4,15 @@ import "typeface-roboto-multilang/latin-ext.css";
 import ru from "flag-icon-css/flags/1x1/ru.svg";
 import us from "flag-icon-css/flags/1x1/us.svg";
 import { defineComponent, provide, ref } from "vue";
-import { mdiAccount, mdiClose, mdiPen } from "@mdi/js";
+import {
+  mdiAccount,
+  mdiArrowDown,
+  mdiArrowLeft,
+  mdiArrowRight,
+  mdiArrowUp,
+  mdiClose,
+  mdiPen
+} from "@mdi/js";
 
 import type { LocaleName } from "@skylib/functions/es/types/locales";
 
@@ -48,6 +56,10 @@ export default defineComponent({
     return {
       language,
       mdiAccount,
+      mdiArrowDown,
+      mdiArrowLeft,
+      mdiArrowRight,
+      mdiArrowUp,
       mdiClose,
       mdiPen,
       us
@@ -86,7 +98,27 @@ export default defineComponent({
     <tr>
       <td>Nav button</td>
       <td>
-        <x-nav-button :icon="mdiClose" tooltip="Close window" />
+        <x-nav-button :icon="mdiArrowDown" tooltip="Down tooltip" />
+        <x-nav-button
+          :icon="mdiArrowDown"
+          tooltip="Down tooltip"
+          tooltip-direction="down"
+        />
+        <x-nav-button
+          :icon="mdiArrowLeft"
+          tooltip="Left tooltip"
+          tooltip-direction="left"
+        />
+        <x-nav-button
+          :icon="mdiArrowRight"
+          tooltip="Right tooltip"
+          tooltip-direction="right"
+        />
+        <x-nav-button
+          :icon="mdiArrowUp"
+          tooltip="Up tooltip"
+          tooltip-direction="up"
+        />
         <x-nav-button>
           <img alt="Alt text" height="20" :src="us" width="20" />
         </x-nav-button>
@@ -95,8 +127,20 @@ export default defineComponent({
     <tr>
       <td>Tooltip</td>
       <td>
-        <q-btn flat :icon="mdiClose" round>
-          <x-tooltip>Close window</x-tooltip>
+        <q-btn flat :icon="mdiArrowDown" round>
+          <x-tooltip>Down tooltip</x-tooltip>
+        </q-btn>
+        <q-btn flat :icon="mdiArrowDown" round>
+          <x-tooltip direction="down">Down tooltip</x-tooltip>
+        </q-btn>
+        <q-btn flat :icon="mdiArrowLeft" round>
+          <x-tooltip direction="left">Left tooltip</x-tooltip>
+        </q-btn>
+        <q-btn flat :icon="mdiArrowRight" round>
+          <x-tooltip direction="right">Right tooltip</x-tooltip>
+        </q-btn>
+        <q-btn flat :icon="mdiArrowUp" round>
+          <x-tooltip direction="up">Up tooltip</x-tooltip>
         </q-btn>
       </td>
     </tr>

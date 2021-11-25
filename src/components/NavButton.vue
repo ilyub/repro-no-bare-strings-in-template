@@ -12,7 +12,8 @@ export default defineComponent({
     "x-tooltip": Tooltip
   },
   props: {
-    tooltip: propOptions(is.string)
+    tooltip: propOptions(is.string),
+    tooltipDirection: propOptions(is.string)
   },
   setup(props) {
     return {
@@ -25,6 +26,8 @@ export default defineComponent({
 <template>
   <q-btn flat round>
     <slot></slot>
-    <x-tooltip v-if="hasTooltip">{{ tooltip }}</x-tooltip>
+    <x-tooltip v-if="hasTooltip" :direction="tooltipDirection">
+      {{ tooltip }}
+    </x-tooltip>
   </q-btn>
 </template>
