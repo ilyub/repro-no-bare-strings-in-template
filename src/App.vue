@@ -8,8 +8,6 @@ import { mdiAccount, mdiClose, mdiPen } from "@mdi/js";
 
 import type { LocaleName } from "@skylib/functions/es/types/locales";
 
-// eslint-disable-next-line import/no-unassigned-import
-import "./App.ts";
 import {
   injectChangeLanguageAction,
   injectLanguagePickerItems
