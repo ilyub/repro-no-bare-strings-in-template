@@ -6,7 +6,9 @@
 
 ### Modules
 
+- [boot/main](modules/boot_main.md)
 - [components/LanguagePicker](modules/components_LanguagePicker.md)
+- [components/Tooltip](modules/components_Tooltip.md)
 - [components/api](modules/components_api.md)
 - [router](modules/router.md)
 - [routes](modules/routes.md)
