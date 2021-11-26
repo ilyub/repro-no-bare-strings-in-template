@@ -3,12 +3,18 @@ import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-j
 import * as testUtils from "@vue/test-utils";
 
 import NavButton from "@/components/NavButton.vue";
+import { injectTooltipDelay } from "@/components/Tooltip";
 
 installQuasarPlugin();
 
 it("prop: tooltip", () => {
   {
     const wrapper = testUtils.mount(NavButton, {
+      global: {
+        provide: {
+          [injectTooltipDelay as symbol]: 1000
+        }
+      },
       props: {
         tooltip: "sample-tooltip"
       }
@@ -18,7 +24,16 @@ it("prop: tooltip", () => {
   }
 
   {
-    const wrapper = testUtils.mount(NavButton);
+    const wrapper = testUtils.mount(NavButton, {
+      global: {
+        provide: {
+          [injectTooltipDelay as symbol]: 1000
+        }
+      },
+      props: {
+        language: "en-US"
+      }
+    });
 
     expect(wrapper.findComponent(QTooltip)).not.toExist();
   }
@@ -26,6 +41,11 @@ it("prop: tooltip", () => {
 
 it("slot: default", () => {
   const wrapper = testUtils.mount(NavButton, {
+    global: {
+      provide: {
+        [injectTooltipDelay as symbol]: 1000
+      }
+    },
     slots: {
       default: '<div class="sample-class">sample-contents</div>"'
     }

@@ -24,27 +24,23 @@ export default defineComponent({
   setup(props) {
     const changeLanguageAction = injectRequire(injectChangeLanguageAction);
 
-    const languagePickerItems = injectRequire(injectLanguagePickerItems);
+    const items = injectRequire(injectLanguagePickerItems);
 
     return {
       activeItem: computed(() => {
-        const item = languagePickerItems.find(
-          candidate => candidate.lang === props.language
-        );
+        const item = items.find(candidate => candidate.lang === props.language);
 
         assert.not.empty(item);
 
         return item;
       }),
       changeLanguage(newLanguage: unknown): void {
-        const item = languagePickerItems.find(
-          candidate => candidate.lang === newLanguage
-        );
+        const item = items.find(candidate => candidate.lang === newLanguage);
 
         assert.not.empty(item);
         changeLanguageAction(item.lang);
       },
-      languagePickerItems
+      items
     };
   }
 });
@@ -62,7 +58,7 @@ export default defineComponent({
       <q-menu>
         <q-list>
           <x-menu-item
-            v-for="(item, key) in languagePickerItems"
+            v-for="(item, key) in items"
             :key="key"
             :caption="item.caption"
             @click="changeLanguage(item.lang)"
