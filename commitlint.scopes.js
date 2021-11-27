@@ -1,1 +1,1 @@
-module.exports = ["App", "NavButton", "Tooltip", "boot"];
+module.exports = ["App", "NavButton", "Tooltip", "boot", "public"];
