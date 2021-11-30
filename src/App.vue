@@ -14,6 +14,7 @@ import {
   mdiPen
 } from "@mdi/js";
 
+import type { NumStrU } from "@skylib/functions/es/types/core";
 import type { LocaleName } from "@skylib/functions/es/types/locales";
 
 import {
@@ -23,6 +24,8 @@ import {
 import LanguagePicker from "./components/LanguagePicker.vue";
 import MenuItem from "./components/MenuItem.vue";
 import NavButton from "./components/NavButton.vue";
+import type { SelectOptions } from "./components/Select";
+import Select from "./components/Select.vue";
 import { injectTooltipDelay } from "./components/Tooltip";
 import Tooltip from "./components/Tooltip.vue";
 
@@ -32,10 +35,19 @@ export default defineComponent({
     "x-language-picker": LanguagePicker,
     "x-menu-item": MenuItem,
     "x-nav-button": NavButton,
+    "x-select": Select,
     "x-tooltip": Tooltip
   },
   setup() {
     const language = ref<LocaleName>("en-US");
+
+    const selectOptions: SelectOptions = [
+      { disable: true, label: "Select option" },
+      { label: "Option 1", value: 1 },
+      { label: "Option 2", value: "a" }
+    ];
+
+    const selectValue = ref<NumStrU>(undefined);
 
     provide(injectChangeLanguageAction, lang => {
       language.value = lang;
@@ -68,6 +80,8 @@ export default defineComponent({
       mdiArrowUp,
       mdiClose,
       mdiPen,
+      selectOptions,
+      selectValue,
       us
     };
   }
@@ -128,6 +142,12 @@ export default defineComponent({
         <x-nav-button>
           <img alt="Alt text" height="20" :src="us" width="20" />
         </x-nav-button>
+      </td>
+    </tr>
+    <tr>
+      <td>Select</td>
+      <td>
+        <x-select v-model="selectValue" :options="selectOptions" />
       </td>
     </tr>
     <tr>

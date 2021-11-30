@@ -47,6 +47,7 @@ module.exports = configure(ctx => {
     extras: [],
     framework: {
       config: {},
+      iconSet: "svg-mdi-v6",
       plugins: []
     },
     pwa: {
