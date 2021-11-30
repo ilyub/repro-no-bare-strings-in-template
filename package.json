@@ -64,7 +64,7 @@
     "@quasar/app": "^3.2.3",
     "@quasar/quasar-app-extension-testing": "^2.0.1",
     "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.6",
-    "@skylib/config": "^0.1.16",
+    "@skylib/config": "^0.1.17",
     "@skylib/eslint-plugin": "^0.1.8",
     "@types/eslint": "^8.2.0",
     "@types/jest": "^27.0.3",
