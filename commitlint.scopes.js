@@ -1,1 +1,9 @@
-module.exports = ["App", "NavButton", "Select", "Tooltip", "boot", "public"];
+module.exports = [
+  "App",
+  "NavButton",
+  "Select",
+  "Tooltip",
+  "boot",
+  "public",
+  "vueStorage"
+];
