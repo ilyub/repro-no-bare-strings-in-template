@@ -5,5 +5,6 @@ module.exports = [
   "Tooltip",
   "boot",
   "public",
+  "quasar",
   "vueStorage"
 ];

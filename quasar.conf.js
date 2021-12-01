@@ -26,7 +26,7 @@ module.exports = configure(ctx => {
     cordova: {},
     css: ["app.scss"],
     devServer: {
-      host: "24tm.local.host",
+      host: "framework.local.host",
       https: true,
       open: true,
       port: 9300
