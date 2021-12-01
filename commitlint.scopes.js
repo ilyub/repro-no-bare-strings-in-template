@@ -6,5 +6,6 @@ module.exports = [
   "boot",
   "public",
   "quasar",
+  "routes",
   "vueStorage"
 ];
