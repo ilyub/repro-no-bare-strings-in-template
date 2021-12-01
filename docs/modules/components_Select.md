@@ -21,13 +21,19 @@
 
 ### SelectOptions
 
-Ƭ **SelectOptions**: readonly [`SelectOption`](../interfaces/components_Select.SelectOption.md)[]
+Ƭ **SelectOptions**<`T`\>: `ReadonlyArray`<[`SelectOption`](../interfaces/components_Select.SelectOption.md)<`T`\>\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `NumStrU` = `NumStrU` |
 
 ## Functions
 
 ### isSelectOption
 
-▸ `Const` **isSelectOption**(`value`): value is SelectOption
+▸ `Const` **isSelectOption**(`value`): value is SelectOption<NumStrU\>
 
 #### Parameters
 
@@ -37,13 +43,13 @@
 
 #### Returns
 
-value is SelectOption
+value is SelectOption<NumStrU\>
 
 ___
 
 ### isSelectOptions
 
-▸ `Const` **isSelectOptions**(`value`): value is readonly SelectOption[]
+▸ `Const` **isSelectOptions**(`value`): value is readonly SelectOption<NumStrU\>[]
 
 #### Parameters
 
@@ -53,4 +59,4 @@ ___
 
 #### Returns
 
-value is readonly SelectOption[]
+value is readonly SelectOption<NumStrU\>[]

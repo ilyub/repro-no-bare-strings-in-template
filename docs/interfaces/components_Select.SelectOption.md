@@ -1,8 +1,14 @@
 [Quasar Framework](../index.md) / [Exports](../modules.md) / [components/Select](../modules/components_Select.md) / SelectOption
 
-# Interface: SelectOption
+# Interface: SelectOption<T\>
 
 [components/Select](../modules/components_Select.md).SelectOption
+
+## Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `NumStrU` = `NumStrU` |
 
 ## Table of contents
 
@@ -28,4 +34,4 @@ ___
 
 ### value
 
-• `Optional` `Readonly` **value**: `NumStr`
+• `Readonly` **value**: `T`
