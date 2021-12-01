@@ -15,9 +15,7 @@ export default defineComponent({
   },
   emits: {
     "update:model-value"(value: unknown) {
-      assert.numStrU(value);
-
-      return true;
+      return is.numStrU(value);
     }
   },
   setup(props, { emit }) {
