@@ -14,7 +14,6 @@ import {
   mdiPen
 } from "@mdi/js";
 
-import type { NumStrU } from "@skylib/functions/es/types/core";
 import type { LocaleName } from "@skylib/functions/es/types/locales";
 
 import {
@@ -39,15 +38,17 @@ export default defineComponent({
     "x-tooltip": Tooltip
   },
   setup() {
+    type SelectValue = 1 | "a" | undefined;
+
     const language = ref<LocaleName>("en-US");
 
-    const selectOptions: SelectOptions = [
-      { disable: true, label: "Select option" },
+    const selectOptions: SelectOptions<SelectValue> = [
+      { disable: true, label: "Select option", value: undefined },
       { label: "Option 1", value: 1 },
       { label: "Option 2", value: "a" }
     ];
 
-    const selectValue = ref<NumStrU>(undefined);
+    const selectValue = ref<SelectValue>(undefined);
 
     provide(injectChangeLanguageAction, lang => {
       language.value = lang;
