@@ -4,12 +4,26 @@
 
 ## Table of contents
 
+### Interfaces
+
+- [TooltipSettings](../interfaces/components_Tooltip.TooltipSettings.md)
+
+### Type aliases
+
+- [InjectTooltipSettings](components_Tooltip.md#injecttooltipsettings)
+
 ### Variables
 
-- [injectTooltipDelay](components_Tooltip.md#injecttooltipdelay)
+- [injectTooltipSettings](components_Tooltip.md#injecttooltipsettings)
+
+## Type aliases
+
+### InjectTooltipSettings
+
+Ƭ **InjectTooltipSettings**: `InjectionKey`<`ComputedRef`<[`TooltipSettings`](../interfaces/components_Tooltip.TooltipSettings.md)\>\>
 
 ## Variables
 
-### injectTooltipDelay
+### injectTooltipSettings
 
-• **injectTooltipDelay**: `InjectionKey`<`ComputedRef`<`number`\>\>
+• **injectTooltipSettings**: [`InjectTooltipSettings`](components_Tooltip.md#injecttooltipsettings)

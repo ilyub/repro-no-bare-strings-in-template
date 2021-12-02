@@ -6,17 +6,18 @@
 
 ### Interfaces
 
-- [LanguagePickerItem](../interfaces/components_LanguagePicker.LanguagePickerItem.md)
+- [Item](../interfaces/components_LanguagePicker.Item.md)
+- [LanguagePickerSettings](../interfaces/components_LanguagePicker.LanguagePickerSettings.md)
 
 ### Type aliases
 
 - [ChangeLanguageAction](components_LanguagePicker.md#changelanguageaction)
-- [LanguagePickerItems](components_LanguagePicker.md#languagepickeritems)
+- [InjectLanguagePickerSettings](components_LanguagePicker.md#injectlanguagepickersettings)
+- [Items](components_LanguagePicker.md#items)
 
 ### Variables
 
-- [injectChangeLanguageAction](components_LanguagePicker.md#injectchangelanguageaction)
-- [injectLanguagePickerItems](components_LanguagePicker.md#injectlanguagepickeritems)
+- [injectLanguagePickerSettings](components_LanguagePicker.md#injectlanguagepickersettings)
 
 ## Type aliases
 
@@ -40,18 +41,18 @@
 
 ___
 
-### LanguagePickerItems
+### InjectLanguagePickerSettings
 
-Ƭ **LanguagePickerItems**: readonly [`LanguagePickerItem`](../interfaces/components_LanguagePicker.LanguagePickerItem.md)[]
-
-## Variables
-
-### injectChangeLanguageAction
-
-• **injectChangeLanguageAction**: `InjectionKey`<[`ChangeLanguageAction`](components_LanguagePicker.md#changelanguageaction)\>
+Ƭ **InjectLanguagePickerSettings**: `InjectionKey`<`ComputedRef`<[`LanguagePickerSettings`](../interfaces/components_LanguagePicker.LanguagePickerSettings.md)\>\>
 
 ___
 
-### injectLanguagePickerItems
+### Items
 
-• **injectLanguagePickerItems**: `InjectionKey`<[`LanguagePickerItems`](components_LanguagePicker.md#languagepickeritems)\>
+Ƭ **Items**: readonly [`Item`](../interfaces/components_LanguagePicker.Item.md)[]
+
+## Variables
+
+### injectLanguagePickerSettings
+
+• **injectLanguagePickerSettings**: [`InjectLanguagePickerSettings`](components_LanguagePicker.md#injectlanguagepickersettings)
