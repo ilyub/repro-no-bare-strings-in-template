@@ -5,10 +5,7 @@ import * as assert from "@skylib/functions/es/assertions";
 import * as is from "@skylib/functions/es/guards";
 
 import { injectRequire, propOptions } from "./api";
-import {
-  injectChangeLanguageAction,
-  injectLanguagePickerItems
-} from "./LanguagePicker";
+import { injectLanguagePickerSettings } from "./LanguagePicker";
 import MenuItem from "./MenuItem.vue";
 import NavButton from "./NavButton.vue";
 
@@ -22,25 +19,27 @@ export default defineComponent({
     language: propOptions.required(is.unknown)
   },
   setup(props) {
-    const changeLanguageAction = injectRequire(injectChangeLanguageAction);
-
-    const items = injectRequire(injectLanguagePickerItems);
+    const settings = injectRequire(injectLanguagePickerSettings);
 
     return {
       activeItem: computed(() => {
-        const item = items.find(candidate => candidate.lang === props.language);
+        const item = settings.value.items.find(
+          candidate => candidate.lang === props.language
+        );
 
         assert.not.empty(item);
 
         return item;
       }),
       changeLanguage(newLanguage: unknown): void {
-        const item = items.find(candidate => candidate.lang === newLanguage);
+        const item = settings.value.items.find(
+          candidate => candidate.lang === newLanguage
+        );
 
         assert.not.empty(item);
-        changeLanguageAction(item.lang);
+        settings.value.changeLanguageAction(item.lang);
       },
-      items
+      settings
     };
   }
 });
@@ -58,7 +57,7 @@ export default defineComponent({
       <q-menu>
         <q-list>
           <x-menu-item
-            v-for="(item, key) in items"
+            v-for="(item, key) in settings.items"
             :key="key"
             :caption="item.caption"
             @click="changeLanguage(item.lang)"

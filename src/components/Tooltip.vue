@@ -4,7 +4,6 @@ import { computed, defineComponent } from "vue";
 import * as is from "@skylib/functions/es/guards";
 
 import { injectRequire, propOptions } from "./api";
-import type { TooltipSettings } from "./Tooltip";
 import { injectTooltipSettings } from "./Tooltip";
 
 export default defineComponent({
@@ -13,10 +12,10 @@ export default defineComponent({
     direction: propOptions.default(is.string, "down")
   },
   setup(props) {
-    const settings = injectRequire<TooltipSettings>(injectTooltipSettings);
+    const settings = injectRequire(injectTooltipSettings);
 
     return {
-      combinedAnchor: computed(() => {
+      anchor: computed(() => {
         switch (props.direction) {
           case "down":
             return "bottom middle";
@@ -56,48 +55,6 @@ export default defineComponent({
 
           default:
             return "bottom middle";
-        }
-      }),
-      combinedSelf: computed(() => {
-        switch (props.direction) {
-          case "down":
-            return "top middle";
-
-          case "down-left":
-            return "top right";
-
-          case "down-right":
-            return "top left";
-
-          case "left":
-            return "center right";
-
-          case "left-down":
-            return "top right";
-
-          case "left-up":
-            return "bottom right";
-
-          case "right":
-            return "center left";
-
-          case "right-down":
-            return "top left";
-
-          case "right-up":
-            return "bottom left";
-
-          case "up":
-            return "bottom middle";
-
-          case "up-left":
-            return "bottom right";
-
-          case "up-right":
-            return "bottom left";
-
-          default:
-            return "top middle";
         }
       }),
       offset: computed(() => {
@@ -124,6 +81,48 @@ export default defineComponent({
 
           default:
             return [0, 10];
+        }
+      }),
+      self: computed(() => {
+        switch (props.direction) {
+          case "down":
+            return "top middle";
+
+          case "down-left":
+            return "top right";
+
+          case "down-right":
+            return "top left";
+
+          case "left":
+            return "center right";
+
+          case "left-down":
+            return "top right";
+
+          case "left-up":
+            return "bottom right";
+
+          case "right":
+            return "center left";
+
+          case "right-down":
+            return "top left";
+
+          case "right-up":
+            return "bottom left";
+
+          case "up":
+            return "bottom middle";
+
+          case "up-left":
+            return "bottom right";
+
+          case "up-right":
+            return "bottom left";
+
+          default:
+            return "top middle";
         }
       }),
       settings,
@@ -187,10 +186,10 @@ export default defineComponent({
 <template>
   <q-tooltip
     v-if="settings.show"
-    :anchor="combinedAnchor"
+    :anchor="anchor"
     :delay="settings.delay"
     :offset="offset"
-    :self="combinedSelf"
+    :self="self"
     :transition-hide="transitionHide"
     :transition-show="transitionShow"
   >

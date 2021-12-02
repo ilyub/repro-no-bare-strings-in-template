@@ -16,15 +16,14 @@ import {
 
 import type { LocaleName } from "@skylib/functions/es/types/locales";
 
-import {
-  injectChangeLanguageAction,
-  injectLanguagePickerItems
-} from "./components/LanguagePicker";
+import type { LanguagePickerSettings } from "./components/LanguagePicker";
+import { injectLanguagePickerSettings } from "./components/LanguagePicker";
 import LanguagePicker from "./components/LanguagePicker.vue";
 import MenuItem from "./components/MenuItem.vue";
 import NavButton from "./components/NavButton.vue";
 import type { SelectOptions } from "./components/Select";
 import Select from "./components/Select.vue";
+import type { TooltipSettings } from "./components/Tooltip";
 import { injectTooltipSettings } from "./components/Tooltip";
 import Tooltip from "./components/Tooltip.vue";
 
@@ -54,26 +53,32 @@ export default defineComponent({
 
     const tooltipShow = ref(true);
 
-    provide(injectChangeLanguageAction, lang => {
-      language.value = lang;
-    });
-
-    provide(injectLanguagePickerItems, [
-      {
-        caption: "English (USA)",
-        flag: us,
-        lang: "en-US"
-      },
-      {
-        caption: "Russian",
-        flag: ru,
-        lang: "ru-RU"
-      }
-    ]);
+    provide(
+      injectLanguagePickerSettings,
+      computed((): LanguagePickerSettings => {
+        return {
+          changeLanguageAction(lang): void {
+            language.value = lang;
+          },
+          items: [
+            {
+              caption: "English (USA)",
+              flag: us,
+              lang: "en-US"
+            },
+            {
+              caption: "Russian",
+              flag: ru,
+              lang: "ru-RU"
+            }
+          ]
+        };
+      })
+    );
 
     provide(
       injectTooltipSettings,
-      computed(() => {
+      computed((): TooltipSettings => {
         return {
           delay: tooltipDelay.value,
           show: tooltipShow.value

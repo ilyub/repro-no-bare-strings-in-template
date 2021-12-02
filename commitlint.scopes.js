@@ -1,5 +1,6 @@
 module.exports = [
   "App",
+  "LanguagePicker",
   "NavButton",
   "Select",
   "Tooltip",

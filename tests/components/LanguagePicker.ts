@@ -1,33 +1,32 @@
-import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-jest";
+import { computed } from "vue";
 import * as testUtils from "@vue/test-utils";
 
-import {
-  injectChangeLanguageAction,
-  injectLanguagePickerItems
-} from "@/components/LanguagePicker";
+import { injectLanguagePickerSettings } from "@/components/LanguagePicker";
 import LanguagePicker from "@/components/LanguagePicker.vue";
 
-installQuasarPlugin();
-
 it("LanguagePicker", () => {
-  const callback = jest.fn();
+  const changeLanguageAction = jest.fn();
+
+  const settings = {
+    changeLanguageAction,
+    items: [
+      {
+        caption: "English (USA)",
+        flag: "us-flag",
+        lang: "en-US"
+      },
+      {
+        caption: "Russian",
+        flag: "ru-flag",
+        lang: "ru-RU"
+      }
+    ]
+  };
 
   const wrapper = testUtils.mount(LanguagePicker, {
     global: {
       provide: {
-        [injectChangeLanguageAction as symbol]: callback,
-        [injectLanguagePickerItems as symbol]: [
-          {
-            caption: "English (USA)",
-            flag: "us-flag",
-            lang: "en-US"
-          },
-          {
-            caption: "Russian",
-            flag: "ru-flag",
-            lang: "ru-RU"
-          }
-        ]
+        [injectLanguagePickerSettings as symbol]: computed(() => settings)
       }
     },
     props: {
