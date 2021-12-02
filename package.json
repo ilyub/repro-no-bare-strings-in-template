@@ -44,18 +44,8 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.12.1",
-    "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.6",
-    "@skylib/facades": "^0.1.6",
-    "@skylib/framework": "^0.1.4",
-    "@skylib/functions": "^0.1.7",
-    "@skylib/typescript-types": "^0.1.1",
-    "@types/lodash": "^4.14.177",
-    "@types/lodash-es": "^4.17.5",
     "core-js": "^3.19.2",
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
-    "quasar": "^2.3.3",
-    "vue": "^3.2.23"
+    "quasar": "^2.3.3"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
@@ -103,6 +93,14 @@
     "vue-eslint-parser": "^8.0.1",
     "vue-jest": "^5.0.0-alpha.10",
     "vue-router": "^4.0.12"
+  },
+  "peerDependencies": {
+    "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.6",
+    "@skylib/facades": "^0.1.6",
+    "@skylib/framework": "^0.1.4",
+    "@skylib/functions": "^0.1.8",
+    "@skylib/typescript-types": "^0.1.1",
+    "vue": "^3.2.23"
   },
   "engines": {
     "node": ">=14.0.0",
