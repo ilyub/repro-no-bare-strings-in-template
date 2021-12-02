@@ -9,7 +9,7 @@ it("Select", () => {
   const wrapper = testUtils.mount(Select, {
     props: {
       options: [
-        { disable: true, label: "Select option" },
+        { disable: true, label: "Select option", value: undefined },
         { label: "Option 1", value: 1 },
         { label: "Option 2", value: "a" }
       ]

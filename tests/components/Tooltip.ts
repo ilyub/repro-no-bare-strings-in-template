@@ -2,16 +2,20 @@ import { QTooltip } from "quasar";
 import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-jest";
 import * as testUtils from "@vue/test-utils";
 
-import { injectTooltipDelay } from "@/components/Tooltip";
+import { injectTooltipSettings } from "@/components/Tooltip";
 import Tooltip from "@/components/Tooltip.vue";
 
 installQuasarPlugin();
 
-it.each([0, 1000, 2000])("delay", delay => {
+it.each([
+  { delay: 0, show: true },
+  { delay: 1000, show: true },
+  { delay: 1000, show: false }
+])("delay", settings => {
   const wrapper = testUtils.mount(Tooltip, {
     global: {
       provide: {
-        [injectTooltipDelay as symbol]: delay
+        [injectTooltipSettings as symbol]: settings
       }
     },
     props: {
@@ -19,5 +23,8 @@ it.each([0, 1000, 2000])("delay", delay => {
     }
   });
 
-  expect(wrapper.findComponent(QTooltip).vm.delay).toStrictEqual(delay);
+  const tooltip = wrapper.findComponent(QTooltip);
+
+  if (settings.show) expect(tooltip.vm.delay).toStrictEqual(settings.delay);
+  else expect(tooltip).not.toExist();
 });

@@ -4,7 +4,8 @@ import { computed, defineComponent } from "vue";
 import * as is from "@skylib/functions/es/guards";
 
 import { injectRequire, propOptions } from "./api";
-import { injectTooltipDelay } from "./Tooltip";
+import type { TooltipSettings } from "./Tooltip";
+import { injectTooltipSettings } from "./Tooltip";
 
 export default defineComponent({
   name: "x-tooltip",
@@ -12,7 +13,7 @@ export default defineComponent({
     direction: propOptions.default(is.string, "down")
   },
   setup(props) {
-    const delay = injectRequire(injectTooltipDelay);
+    const settings = injectRequire<TooltipSettings>(injectTooltipSettings);
 
     return {
       combinedAnchor: computed(() => {
@@ -99,7 +100,6 @@ export default defineComponent({
             return "top middle";
         }
       }),
-      delay,
       offset: computed(() => {
         switch (props.direction) {
           case "down":
@@ -126,6 +126,7 @@ export default defineComponent({
             return [0, 10];
         }
       }),
+      settings,
       transitionHide: computed(() => {
         switch (props.direction) {
           case "down":
@@ -185,8 +186,9 @@ export default defineComponent({
 
 <template>
   <q-tooltip
+    v-if="settings.show"
     :anchor="combinedAnchor"
-    :delay="delay"
+    :delay="settings.delay"
     :offset="offset"
     :self="combinedSelf"
     :transition-hide="transitionHide"

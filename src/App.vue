@@ -25,7 +25,7 @@ import MenuItem from "./components/MenuItem.vue";
 import NavButton from "./components/NavButton.vue";
 import type { SelectOptions } from "./components/Select";
 import Select from "./components/Select.vue";
-import { injectTooltipDelay } from "./components/Tooltip";
+import { injectTooltipSettings } from "./components/Tooltip";
 import Tooltip from "./components/Tooltip.vue";
 
 export default defineComponent({
@@ -50,6 +50,10 @@ export default defineComponent({
 
     const selectValue = ref<SelectValue>(undefined);
 
+    const tooltipDelay = ref(1000);
+
+    const tooltipShow = ref(true);
+
     provide(injectChangeLanguageAction, lang => {
       language.value = lang;
     });
@@ -68,8 +72,13 @@ export default defineComponent({
     ]);
 
     provide(
-      injectTooltipDelay,
-      computed(() => 1000)
+      injectTooltipSettings,
+      computed(() => {
+        return {
+          delay: tooltipDelay.value,
+          show: tooltipShow.value
+        };
+      })
     );
 
     return {
@@ -83,6 +92,8 @@ export default defineComponent({
       mdiPen,
       selectOptions,
       selectValue,
+      tooltipDelay,
+      tooltipShow,
       us
     };
   }
@@ -90,110 +101,133 @@ export default defineComponent({
 </script>
 
 <template>
-  <table>
-    <tr>
-      <td>Language picker</td>
-      <td>
-        <x-language-picker :language="language" />
-      </td>
-    </tr>
-    <tr>
-      <td>Menu item</td>
-      <td>
-        <q-btn flat :icon="mdiAccount" round>
-          <q-menu>
-            <q-list>
-              <x-menu-item caption="Settings" :icon="mdiPen" />
-              <x-menu-item caption="Language">
-                <template #icon>
-                  <img alt="Alt text" height="18" :src="us" width="18" />
-                </template>
-              </x-menu-item>
-              <q-separator />
-              <x-menu-item caption="Exit" />
-            </q-list>
-          </q-menu>
-        </q-btn>
-      </td>
-    </tr>
-    <tr>
-      <td>Nav button</td>
-      <td>
-        <x-nav-button :icon="mdiArrowDown" tooltip="Down tooltip" />
-        <x-nav-button
-          :icon="mdiArrowDown"
-          tooltip="Down tooltip"
-          tooltip-direction="down"
-        />
-        <x-nav-button
-          :icon="mdiArrowLeft"
-          tooltip="Left tooltip"
-          tooltip-direction="left"
-        />
-        <x-nav-button
-          :icon="mdiArrowRight"
-          tooltip="Right tooltip"
-          tooltip-direction="right"
-        />
-        <x-nav-button
-          :icon="mdiArrowUp"
-          tooltip="Up tooltip"
-          tooltip-direction="up"
-        />
-        <x-nav-button>
-          <img alt="Alt text" height="20" :src="us" width="20" />
-        </x-nav-button>
-      </td>
-    </tr>
-    <tr>
-      <td>Select</td>
-      <td>
-        <x-select v-model="selectValue" :options="selectOptions" />
-      </td>
-    </tr>
-    <tr>
-      <td>Tooltip</td>
-      <td>
-        <q-btn flat :icon="mdiArrowDown" round>
-          <x-tooltip>Down tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowDown" round>
-          <x-tooltip direction="down">Down tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowDown" round>
-          <x-tooltip direction="down-left">Down-left tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowDown" round>
-          <x-tooltip direction="down-right">Down-right tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowLeft" round>
-          <x-tooltip direction="left">Left tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowLeft" round>
-          <x-tooltip direction="left-down">Left-down tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowLeft" round>
-          <x-tooltip direction="left-up">Left-up tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowRight" round>
-          <x-tooltip direction="right">Right tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowRight" round>
-          <x-tooltip direction="right-down">Right-down tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowRight" round>
-          <x-tooltip direction="right-up">Right-up tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowUp" round>
-          <x-tooltip direction="up">Up tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowUp" round>
-          <x-tooltip direction="up-left">Up-left tooltip</x-tooltip>
-        </q-btn>
-        <q-btn flat :icon="mdiArrowUp" round>
-          <x-tooltip direction="up-right">Up-right tooltip</x-tooltip>
-        </q-btn>
-      </td>
-    </tr>
-  </table>
+  <div class="q-ma-lg">
+    <table class="q-mb-lg">
+      <tr>
+        <td>
+          Show tooltips: <q-toggle v-model="tooltipShow" /> with delay of
+          <q-knob
+            v-model="tooltipDelay"
+            class="q-ml-sm q-mr-sm"
+            color="primary"
+            :disable="!tooltipShow"
+            :max="3000"
+            :min="0"
+            show-value
+            size="50px"
+            :step="100"
+            :thickness="0.2"
+            track-color="grey-3"
+          />
+          ms
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>Language picker</td>
+        <td>
+          <x-language-picker :language="language" />
+        </td>
+      </tr>
+      <tr>
+        <td>Menu item</td>
+        <td>
+          <q-btn flat :icon="mdiAccount" round>
+            <q-menu>
+              <q-list>
+                <x-menu-item caption="Settings" :icon="mdiPen" />
+                <x-menu-item caption="Language">
+                  <template #icon>
+                    <img alt="Alt text" height="18" :src="us" width="18" />
+                  </template>
+                </x-menu-item>
+                <q-separator />
+                <x-menu-item caption="Exit" />
+              </q-list>
+            </q-menu>
+          </q-btn>
+        </td>
+      </tr>
+      <tr>
+        <td>Nav button</td>
+        <td>
+          <x-nav-button :icon="mdiArrowDown" tooltip="Down tooltip" />
+          <x-nav-button
+            :icon="mdiArrowDown"
+            tooltip="Down tooltip"
+            tooltip-direction="down"
+          />
+          <x-nav-button
+            :icon="mdiArrowLeft"
+            tooltip="Left tooltip"
+            tooltip-direction="left"
+          />
+          <x-nav-button
+            :icon="mdiArrowRight"
+            tooltip="Right tooltip"
+            tooltip-direction="right"
+          />
+          <x-nav-button
+            :icon="mdiArrowUp"
+            tooltip="Up tooltip"
+            tooltip-direction="up"
+          />
+          <x-nav-button>
+            <img alt="Alt text" height="20" :src="us" width="20" />
+          </x-nav-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Select</td>
+        <td>
+          <x-select v-model="selectValue" :options="selectOptions" />
+        </td>
+      </tr>
+      <tr>
+        <td>Tooltip</td>
+        <td>
+          <q-btn flat :icon="mdiArrowDown" round>
+            <x-tooltip>Down tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowDown" round>
+            <x-tooltip direction="down">Down tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowDown" round>
+            <x-tooltip direction="down-left">Down-left tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowDown" round>
+            <x-tooltip direction="down-right">Down-right tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowLeft" round>
+            <x-tooltip direction="left">Left tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowLeft" round>
+            <x-tooltip direction="left-down">Left-down tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowLeft" round>
+            <x-tooltip direction="left-up">Left-up tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowRight" round>
+            <x-tooltip direction="right">Right tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowRight" round>
+            <x-tooltip direction="right-down">Right-down tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowRight" round>
+            <x-tooltip direction="right-up">Right-up tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowUp" round>
+            <x-tooltip direction="up">Up tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowUp" round>
+            <x-tooltip direction="up-left">Up-left tooltip</x-tooltip>
+          </q-btn>
+          <q-btn flat :icon="mdiArrowUp" round>
+            <x-tooltip direction="up-right">Up-right tooltip</x-tooltip>
+          </q-btn>
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>

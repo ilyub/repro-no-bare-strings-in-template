@@ -1,4 +1,9 @@
 import type { ComputedRef, InjectionKey } from "vue";
 
-export const injectTooltipDelay: InjectionKey<ComputedRef<number>> =
-  Symbol("TooltipDelay");
+export interface TooltipSettings {
+  readonly delay: number;
+  readonly show: boolean;
+}
+
+export const injectTooltipSettings: InjectionKey<ComputedRef<TooltipSettings>> =
+  Symbol("TooltipSettings");

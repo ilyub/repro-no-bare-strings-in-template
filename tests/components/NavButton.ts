@@ -3,7 +3,7 @@ import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-j
 import * as testUtils from "@vue/test-utils";
 
 import NavButton from "@/components/NavButton.vue";
-import { injectTooltipDelay } from "@/components/Tooltip";
+import { injectTooltipSettings } from "@/components/Tooltip";
 
 installQuasarPlugin();
 
@@ -12,7 +12,7 @@ it("prop: tooltip", () => {
     const wrapper = testUtils.mount(NavButton, {
       global: {
         provide: {
-          [injectTooltipDelay as symbol]: 1000
+          [injectTooltipSettings as symbol]: { delay: 1000, show: true }
         }
       },
       props: {
@@ -27,7 +27,7 @@ it("prop: tooltip", () => {
     const wrapper = testUtils.mount(NavButton, {
       global: {
         provide: {
-          [injectTooltipDelay as symbol]: 1000
+          [injectTooltipSettings as symbol]: { delay: 1000, show: true }
         }
       },
       props: {
@@ -43,7 +43,7 @@ it("slot: default", () => {
   const wrapper = testUtils.mount(NavButton, {
     global: {
       provide: {
-        [injectTooltipDelay as symbol]: 1000
+        [injectTooltipSettings as symbol]: { delay: 1000, show: true }
       }
     },
     slots: {
