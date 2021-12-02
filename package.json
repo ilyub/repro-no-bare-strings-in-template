@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.12.1",
+    "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.6",
     "@skylib/facades": "^0.1.6",
     "@skylib/framework": "^0.1.4",
     "@skylib/functions": "^0.1.7",
@@ -54,7 +55,7 @@
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "quasar": "^2.3.3",
-    "vue": "^3.2.21"
+    "vue": "^3.2.23"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
@@ -63,7 +64,6 @@
     "@mdi/js": "^6.5.95",
     "@quasar/app": "^3.2.3",
     "@quasar/quasar-app-extension-testing": "^2.0.1",
-    "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.6",
     "@skylib/config": "^0.1.17",
     "@skylib/eslint-plugin": "^0.1.8",
     "@types/eslint": "^8.2.0",
