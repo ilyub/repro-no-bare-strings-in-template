@@ -1,5 +1,6 @@
 module.exports = [
   "App",
+  "Knob",
   "LanguagePicker",
   "NavButton",
   "Select",

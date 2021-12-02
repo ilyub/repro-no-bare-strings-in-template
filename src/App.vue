@@ -16,6 +16,7 @@ import {
 
 import type { LocaleName } from "@skylib/functions/es/types/locales";
 
+import Knob from "./components/Knob.vue";
 import type { LanguagePickerSettings } from "./components/LanguagePicker";
 import { injectLanguagePickerSettings } from "./components/LanguagePicker";
 import LanguagePicker from "./components/LanguagePicker.vue";
@@ -30,6 +31,7 @@ import Tooltip from "./components/Tooltip.vue";
 export default defineComponent({
   name: "app",
   components: {
+    "x-knob": Knob,
     "x-language-picker": LanguagePicker,
     "x-menu-item": MenuItem,
     "x-nav-button": NavButton,
@@ -110,25 +112,27 @@ export default defineComponent({
     <table class="q-mb-lg">
       <tr>
         <td>
-          Show tooltips: <q-toggle v-model="tooltipShow" /> with delay of
-          <q-knob
+          Show tooltips:
+          <q-toggle v-model="tooltipShow" />
+          with delay of
+          <x-knob
             v-model="tooltipDelay"
             class="q-ml-sm q-mr-sm"
-            color="primary"
             :disable="!tooltipShow"
             :max="3000"
             :min="0"
-            show-value
-            size="50px"
-            :step="100"
-            :thickness="0.2"
-            track-color="grey-3"
           />
           ms
         </td>
       </tr>
     </table>
     <table>
+      <tr>
+        <td>Knob</td>
+        <td>
+          <x-knob :max="1000" :min="0" :step="10" />
+        </td>
+      </tr>
       <tr>
         <td>Language picker</td>
         <td>

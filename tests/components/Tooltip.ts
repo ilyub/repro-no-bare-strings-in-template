@@ -15,9 +15,6 @@ it.each([
       provide: {
         [injectTooltipSettings as symbol]: computed(() => settings)
       }
-    },
-    props: {
-      language: "en-US"
     }
   });
 
