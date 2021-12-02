@@ -120,7 +120,7 @@ export default defineComponent({
             class="q-ml-sm q-mr-sm"
             :disable="!tooltipShow"
             :max="3000"
-            :min="0"
+            :step="100"
           />
           ms
         </td>
@@ -130,7 +130,7 @@ export default defineComponent({
       <tr>
         <td>Knob</td>
         <td>
-          <x-knob :max="1000" :min="0" :step="10" />
+          <x-knob :max="1000" :step="10" />
         </td>
       </tr>
       <tr>
