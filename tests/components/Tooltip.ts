@@ -1,11 +1,9 @@
 import { QTooltip } from "quasar";
-import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-jest";
+import { computed } from "vue";
 import * as testUtils from "@vue/test-utils";
 
 import { injectTooltipSettings } from "@/components/Tooltip";
 import Tooltip from "@/components/Tooltip.vue";
-
-installQuasarPlugin();
 
 it.each([
   { delay: 0, show: true },
@@ -15,7 +13,7 @@ it.each([
   const wrapper = testUtils.mount(Tooltip, {
     global: {
       provide: {
-        [injectTooltipSettings as symbol]: settings
+        [injectTooltipSettings as symbol]: computed(() => settings)
       }
     },
     props: {

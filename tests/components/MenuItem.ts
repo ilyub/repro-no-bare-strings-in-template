@@ -1,9 +1,6 @@
-import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-jest";
 import * as testUtils from "@vue/test-utils";
 
 import MenuItem from "@/components/MenuItem.vue";
-
-installQuasarPlugin();
 
 it("no icon", () => {
   const wrapper = testUtils.mount(MenuItem, {

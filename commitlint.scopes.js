@@ -7,5 +7,6 @@ module.exports = [
   "public",
   "quasar",
   "routes",
+  "testUtils",
   "vueStorage"
 ];

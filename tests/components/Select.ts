@@ -1,9 +1,6 @@
-import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-jest";
 import * as testUtils from "@vue/test-utils";
 
 import Select from "@/components/Select.vue";
-
-installQuasarPlugin();
 
 it("Select", () => {
   const wrapper = testUtils.mount(Select, {

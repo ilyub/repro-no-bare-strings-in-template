@@ -1,18 +1,18 @@
 import { QTooltip } from "quasar";
-import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-jest";
+import { computed } from "vue";
 import * as testUtils from "@vue/test-utils";
 
 import NavButton from "@/components/NavButton.vue";
 import { injectTooltipSettings } from "@/components/Tooltip";
 
-installQuasarPlugin();
-
 it("prop: tooltip", () => {
   {
+    const tooltipSettings = { delay: 1000, show: true };
+
     const wrapper = testUtils.mount(NavButton, {
       global: {
         provide: {
-          [injectTooltipSettings as symbol]: { delay: 1000, show: true }
+          [injectTooltipSettings as symbol]: computed(() => tooltipSettings)
         }
       },
       props: {
@@ -24,14 +24,13 @@ it("prop: tooltip", () => {
   }
 
   {
+    const tooltipSettings = { delay: 1000, show: true };
+
     const wrapper = testUtils.mount(NavButton, {
       global: {
         provide: {
-          [injectTooltipSettings as symbol]: { delay: 1000, show: true }
+          [injectTooltipSettings as symbol]: computed(() => tooltipSettings)
         }
-      },
-      props: {
-        language: "en-US"
       }
     });
 
@@ -40,10 +39,12 @@ it("prop: tooltip", () => {
 });
 
 it("slot: default", () => {
+  const tooltipSettings = { delay: 1000, show: true };
+
   const wrapper = testUtils.mount(NavButton, {
     global: {
       provide: {
-        [injectTooltipSettings as symbol]: { delay: 1000, show: true }
+        [injectTooltipSettings as symbol]: computed(() => tooltipSettings)
       }
     },
     slots: {
