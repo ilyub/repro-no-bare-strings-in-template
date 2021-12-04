@@ -1,13 +1,28 @@
 import { boot } from "quasar/wrappers";
 
-declare global {
-  namespace configurable {
-    interface LocaleName {
-      readonly "en-US": true;
-      readonly "ru-RU": true;
-    }
-  }
-}
+import { lang } from "@skylib/facades/es/lang";
+import { reactiveStorage } from "@skylib/facades/es/reactiveStorage";
+import { Dictionary } from "@skylib/framework/es/facade-implementations/lang/dictionary";
+
+// eslint-disable-next-line import/no-relative-parent-imports
+import * as vueStorage from "../facade-implementations/reactiveStorage/vueStorage";
+// eslint-disable-next-line import/no-relative-parent-imports
+import { plugin } from "../plugin";
+
+import { definitions } from "./lang";
 
 // eslint-disable-next-line import/no-default-export
-export default boot(() => {});
+export default boot(({ app }) => {
+  {
+    reactiveStorage.setImplementation(vueStorage.implementation);
+  }
+
+  {
+    lang.setImplementation(Dictionary.create(definitions));
+    Dictionary.configure({ localeName: "en-US" });
+  }
+
+  {
+    app.use(plugin);
+  }
+});

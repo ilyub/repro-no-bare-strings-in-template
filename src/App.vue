@@ -14,32 +14,23 @@ import {
   mdiPen
 } from "@mdi/js";
 
+import { lang } from "@skylib/facades/es/lang";
+import { Dictionary } from "@skylib/framework/es/facade-implementations/lang/dictionary";
 import type { LocaleName } from "@skylib/functions/es/types/locales";
 
-import Knob from "./components/Knob.vue";
-import type { LanguagePickerSettings } from "./components/LanguagePicker";
-import { injectLanguagePickerSettings } from "./components/LanguagePicker";
-import LanguagePicker from "./components/LanguagePicker.vue";
-import MenuItem from "./components/MenuItem.vue";
-import NavButton from "./components/NavButton.vue";
-import type { SelectOptions } from "./components/Select";
-import Select from "./components/Select.vue";
-import type { TooltipSettings } from "./components/Tooltip";
-import { injectTooltipSettings } from "./components/Tooltip";
-import Tooltip from "./components/Tooltip.vue";
+import type { GroupItems } from "./components/Group.extras";
+import type { LanguagePickerSettings } from "./components/LanguagePicker.extras";
+import { injectLanguagePickerSettings } from "./components/LanguagePicker.extras";
+import type { SelectOptions } from "./components/Select.extras";
+import type { TooltipSettings } from "./components/Tooltip.extras";
+import { injectTooltipSettings } from "./components/Tooltip.extras";
 
 export default defineComponent({
   name: "app",
-  components: {
-    "x-knob": Knob,
-    "x-language-picker": LanguagePicker,
-    "x-menu-item": MenuItem,
-    "x-nav-button": NavButton,
-    "x-select": Select,
-    "x-tooltip": Tooltip
-  },
   setup() {
     type SelectValue = 1 | "a" | undefined;
+
+    const knobValue = ref(100);
 
     const language = ref<LocaleName>("en-US");
 
@@ -49,7 +40,15 @@ export default defineComponent({
       { label: "Option 2", value: "a" }
     ];
 
+    const searchString = ref("");
+
     const selectValue = ref<SelectValue>(undefined);
+
+    const showSection1 = ref(true);
+
+    const showSection2 = ref(true);
+
+    const showSection3 = ref(true);
 
     const tooltipDelay = ref(1000);
 
@@ -59,8 +58,9 @@ export default defineComponent({
       injectLanguagePickerSettings,
       computed((): LanguagePickerSettings => {
         return {
-          changeLanguageAction(lang): void {
-            language.value = lang;
+          changeLanguageAction(value): void {
+            language.value = value;
+            Dictionary.configure({ localeName: value });
           },
           items: [
             {
@@ -89,6 +89,27 @@ export default defineComponent({
     );
 
     return {
+      groupItems: computed(
+        (): GroupItems => [
+          {
+            id: "section1",
+            show: showSection1.value,
+            title: "Aaa bbb"
+          },
+          {
+            id: "section2",
+            show: showSection2.value,
+            title: "Bbb ccc"
+          },
+          {
+            id: "section3",
+            show: showSection3.value,
+            title: "Ccc ddd"
+          }
+        ]
+      ),
+      knobValue,
+      lang,
       language,
       mdiAccount,
       mdiArrowDown,
@@ -97,8 +118,12 @@ export default defineComponent({
       mdiArrowUp,
       mdiClose,
       mdiPen,
+      searchString,
       selectOptions,
       selectValue,
+      showSection1,
+      showSection2,
+      showSection3,
       tooltipDelay,
       tooltipShow,
       us
@@ -108,10 +133,105 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="q-ma-lg">
-    <table class="q-mb-lg">
-      <tr>
-        <td>
+  <table class="q-ma-lg">
+    <tr>
+      <td>Group</td>
+      <td>
+        <q-input
+          v-model="searchString"
+          dense
+          label="Search settings"
+          :searh-string="searchString"
+        />
+        <div class="q-mt-md">
+          Show
+          <q-checkbox v-model="showSection1" /> 1
+          <q-checkbox v-model="showSection2" /> 2
+          <q-checkbox v-model="showSection3" /> 3
+        </div>
+        <x-group
+          class="q-mt-lg"
+          :items="groupItems"
+          not-found-label="No results found"
+          :search-string="searchString"
+        >
+          <template #section1>Section 1</template>
+          <template #section2>Section 2</template>
+          <template #section3>Section 3</template>
+        </x-group>
+      </td>
+    </tr>
+    <tr>
+      <td>Knob</td>
+      <td>
+        <x-knob v-model="knobValue" :max="1000" :step="10" />
+      </td>
+    </tr>
+    <tr>
+      <td>Language picker</td>
+      <td class="flex items-center">
+        <x-language-picker :language="language" />
+        {{ lang.SampleWord }}
+      </td>
+    </tr>
+    <tr>
+      <td>Menu item</td>
+      <td>
+        <q-btn flat :icon="mdiAccount" round>
+          <q-menu>
+            <q-list>
+              <x-menu-item caption="Settings" :icon="mdiPen" />
+              <x-menu-item caption="Language">
+                <template #icon>
+                  <img alt="Alt text" height="18" :src="us" width="18" />
+                </template>
+              </x-menu-item>
+              <q-separator />
+              <x-menu-item caption="Exit" />
+            </q-list>
+          </q-menu>
+        </q-btn>
+      </td>
+    </tr>
+    <tr>
+      <td>Nav button</td>
+      <td>
+        <x-nav-button :icon="mdiArrowDown" tooltip="Down tooltip" />
+        <x-nav-button
+          :icon="mdiArrowDown"
+          tooltip="Down tooltip"
+          tooltip-direction="down"
+        />
+        <x-nav-button
+          :icon="mdiArrowLeft"
+          tooltip="Left tooltip"
+          tooltip-direction="left"
+        />
+        <x-nav-button
+          :icon="mdiArrowRight"
+          tooltip="Right tooltip"
+          tooltip-direction="right"
+        />
+        <x-nav-button
+          :icon="mdiArrowUp"
+          tooltip="Up tooltip"
+          tooltip-direction="up"
+        />
+        <x-nav-button>
+          <img alt="Alt text" height="20" :src="us" width="20" />
+        </x-nav-button>
+      </td>
+    </tr>
+    <tr>
+      <td>Select</td>
+      <td>
+        <x-select v-model="selectValue" :options="selectOptions" />
+      </td>
+    </tr>
+    <tr>
+      <td>Tooltip</td>
+      <td>
+        <div>
           Show tooltips:
           <q-toggle v-model="tooltipShow" />
           with delay of
@@ -123,79 +243,8 @@ export default defineComponent({
             :step="100"
           />
           ms
-        </td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td>Knob</td>
-        <td>
-          <x-knob :max="1000" :step="10" />
-        </td>
-      </tr>
-      <tr>
-        <td>Language picker</td>
-        <td>
-          <x-language-picker :language="language" />
-        </td>
-      </tr>
-      <tr>
-        <td>Menu item</td>
-        <td>
-          <q-btn flat :icon="mdiAccount" round>
-            <q-menu>
-              <q-list>
-                <x-menu-item caption="Settings" :icon="mdiPen" />
-                <x-menu-item caption="Language">
-                  <template #icon>
-                    <img alt="Alt text" height="18" :src="us" width="18" />
-                  </template>
-                </x-menu-item>
-                <q-separator />
-                <x-menu-item caption="Exit" />
-              </q-list>
-            </q-menu>
-          </q-btn>
-        </td>
-      </tr>
-      <tr>
-        <td>Nav button</td>
-        <td>
-          <x-nav-button :icon="mdiArrowDown" tooltip="Down tooltip" />
-          <x-nav-button
-            :icon="mdiArrowDown"
-            tooltip="Down tooltip"
-            tooltip-direction="down"
-          />
-          <x-nav-button
-            :icon="mdiArrowLeft"
-            tooltip="Left tooltip"
-            tooltip-direction="left"
-          />
-          <x-nav-button
-            :icon="mdiArrowRight"
-            tooltip="Right tooltip"
-            tooltip-direction="right"
-          />
-          <x-nav-button
-            :icon="mdiArrowUp"
-            tooltip="Up tooltip"
-            tooltip-direction="up"
-          />
-          <x-nav-button>
-            <img alt="Alt text" height="20" :src="us" width="20" />
-          </x-nav-button>
-        </td>
-      </tr>
-      <tr>
-        <td>Select</td>
-        <td>
-          <x-select v-model="selectValue" :options="selectOptions" />
-        </td>
-      </tr>
-      <tr>
-        <td>Tooltip</td>
-        <td>
+        </div>
+        <div>
           <q-btn flat :icon="mdiArrowDown" round>
             <x-tooltip>Down tooltip</x-tooltip>
           </q-btn>
@@ -235,8 +284,19 @@ export default defineComponent({
           <q-btn flat :icon="mdiArrowUp" round>
             <x-tooltip direction="up-right">Up-right tooltip</x-tooltip>
           </q-btn>
-        </td>
-      </tr>
-    </table>
-  </div>
+        </div>
+      </td>
+    </tr>
+  </table>
 </template>
+
+<style lang="scss" scoped>
+table {
+  border-collapse: collapse;
+
+  td {
+    border: 1px solid $grey-4;
+    padding: 10px;
+  }
+}
+</style>

@@ -1,4 +1,4 @@
 module.exports = {
   es: true,
-  readonlyIgnoreTypes: ["InjectionKey", "SetupContext"]
+  readonlyIgnoreTypes: ["App", "InjectionKey", "SetupContext"]
 };
