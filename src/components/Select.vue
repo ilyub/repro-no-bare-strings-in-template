@@ -5,7 +5,7 @@ import * as assert from "@skylib/functions/es/assertions";
 import * as is from "@skylib/functions/es/guards";
 
 import { propOptions } from "./api";
-import { isSelectOption, isSelectOptions } from "./Select";
+import { isSelectOption, isSelectOptions } from "./Select.extras";
 
 export default defineComponent({
   name: "x-select",

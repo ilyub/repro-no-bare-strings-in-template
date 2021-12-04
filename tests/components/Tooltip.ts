@@ -2,7 +2,7 @@ import { QTooltip } from "quasar";
 import { computed } from "vue";
 import * as testUtils from "@vue/test-utils";
 
-import { injectTooltipSettings } from "@/components/Tooltip";
+import { injectTooltipSettings } from "@/components/Tooltip.extras";
 import Tooltip from "@/components/Tooltip.vue";
 
 it.each([

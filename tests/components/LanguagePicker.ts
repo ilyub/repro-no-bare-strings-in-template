@@ -1,7 +1,7 @@
 import { computed } from "vue";
 import * as testUtils from "@vue/test-utils";
 
-import { injectLanguagePickerSettings } from "@/components/LanguagePicker";
+import { injectLanguagePickerSettings } from "@/components/LanguagePicker.extras";
 import LanguagePicker from "@/components/LanguagePicker.vue";
 
 it("LanguagePicker", () => {

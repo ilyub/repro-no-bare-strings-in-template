@@ -3,7 +3,7 @@ import { computed } from "vue";
 import * as testUtils from "@vue/test-utils";
 
 import NavButton from "@/components/NavButton.vue";
-import { injectTooltipSettings } from "@/components/Tooltip";
+import { injectTooltipSettings } from "@/components/Tooltip.extras";
 
 it("prop: tooltip", () => {
   {

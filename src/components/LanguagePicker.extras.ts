@@ -8,17 +8,17 @@ export type InjectLanguagePickerSettings = InjectionKey<
   ComputedRef<LanguagePickerSettings>
 >;
 
-export interface Item {
+export interface LanguagePickerItem {
   readonly caption: string;
   readonly flag: string;
   readonly lang: LocaleName;
 }
 
-export type Items = readonly Item[];
+export type LanguagePickerItems = readonly LanguagePickerItem[];
 
 export interface LanguagePickerSettings {
   readonly changeLanguageAction: ChangeLanguageAction;
-  readonly items: Items;
+  readonly items: LanguagePickerItems;
 }
 
 export const injectLanguagePickerSettings: InjectLanguagePickerSettings =

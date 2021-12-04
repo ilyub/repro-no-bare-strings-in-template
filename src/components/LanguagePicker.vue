@@ -5,7 +5,7 @@ import * as assert from "@skylib/functions/es/assertions";
 import * as is from "@skylib/functions/es/guards";
 
 import { injectRequire, propOptions } from "./api";
-import { injectLanguagePickerSettings } from "./LanguagePicker";
+import { injectLanguagePickerSettings } from "./LanguagePicker.extras";
 import MenuItem from "./MenuItem.vue";
 import NavButton from "./NavButton.vue";
 

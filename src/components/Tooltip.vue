@@ -4,7 +4,7 @@ import { computed, defineComponent } from "vue";
 import * as is from "@skylib/functions/es/guards";
 
 import { injectRequire, propOptions } from "./api";
-import { injectTooltipSettings } from "./Tooltip";
+import { injectTooltipSettings } from "./Tooltip.extras";
 
 export default defineComponent({
   name: "x-tooltip",
