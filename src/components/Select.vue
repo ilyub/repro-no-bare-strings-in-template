@@ -10,7 +10,7 @@ import { isSelectOption, isSelectOptions } from "./Select.extras";
 export default defineComponent({
   name: "x-select",
   props: {
-    modelValue: propOptions(is.numStrU),
+    modelValue: propOptions(is.numStr),
     options: propOptions.required(isSelectOptions)
   },
   emits: {
@@ -40,7 +40,7 @@ export default defineComponent({
 
 <template>
   <q-select
-    filled
+    dense
     :model-value="activeOption"
     :options="options"
     @update:model-value="updateModelValue"

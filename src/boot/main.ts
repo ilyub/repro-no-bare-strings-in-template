@@ -1,5 +1,8 @@
 import { boot } from "quasar/wrappers";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { mdiClose } from "@mdi/js";
 
+import { icons } from "@skylib/facades/es/icons";
 import { lang } from "@skylib/facades/es/lang";
 import { reactiveStorage } from "@skylib/facades/es/reactiveStorage";
 import { Dictionary } from "@skylib/framework/es/facade-implementations/lang/dictionary";
@@ -15,6 +18,12 @@ import { definitions } from "./lang";
 export default boot(({ app }) => {
   {
     reactiveStorage.setImplementation(vueStorage.implementation);
+  }
+
+  {
+    icons.setImplementation({
+      close: mdiClose
+    });
   }
 
   {

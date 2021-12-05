@@ -28,19 +28,24 @@ import { injectTooltipSettings } from "./components/Tooltip.extras";
 export default defineComponent({
   name: "app",
   setup() {
-    type SelectValue = 1 | "a" | undefined;
+    type SelectValue = 1 | "a" | "b" | undefined;
+
+    const inputValue1 = ref("");
+
+    const inputValue2 = ref("");
 
     const knobValue = ref(100);
 
     const language = ref<LocaleName>("en-US");
 
-    const selectOptions: SelectOptions<SelectValue> = [
-      { disable: true, label: "Select option", value: undefined },
-      { label: "Option 1", value: 1 },
-      { label: "Option 2", value: "a" }
-    ];
-
     const searchString = ref("");
+
+    const selectOptions: SelectOptions<SelectValue> = [
+      { label: "Select option", value: undefined },
+      { label: "Option 1", value: 1 },
+      { label: "Option 2", value: "a" },
+      { disable: true, label: "Option 3", value: "b" }
+    ];
 
     const selectValue = ref<SelectValue>(undefined);
 
@@ -108,6 +113,8 @@ export default defineComponent({
           }
         ]
       ),
+      inputValue1,
+      inputValue2,
       knobValue,
       lang,
       language,
@@ -133,16 +140,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <table class="q-ma-lg">
+  <table class="q-ma-lg q-mb-xl">
     <tr>
       <td>Group</td>
       <td>
-        <q-input
-          v-model="searchString"
-          dense
-          label="Search settings"
-          :searh-string="searchString"
-        />
+        <x-input v-model="searchString" label="Search for settings" />
         <div class="q-mt-md">
           Show
           <q-checkbox v-model="showSection1" /> 1
@@ -162,6 +164,13 @@ export default defineComponent({
       </td>
     </tr>
     <tr>
+      <td>Input</td>
+      <td>
+        <x-input v-model="inputValue1" />
+        <x-input v-model="inputValue2" reset-button />
+      </td>
+    </tr>
+    <tr>
       <td>Knob</td>
       <td>
         <x-knob v-model="knobValue" :max="1000" :step="10" />
@@ -177,7 +186,7 @@ export default defineComponent({
     <tr>
       <td>Menu item</td>
       <td>
-        <q-btn flat :icon="mdiAccount" round>
+        <x-nav-button :icon="mdiAccount">
           <q-menu>
             <q-list>
               <x-menu-item caption="Settings" :icon="mdiPen" />
@@ -190,7 +199,7 @@ export default defineComponent({
               <x-menu-item caption="Exit" />
             </q-list>
           </q-menu>
-        </q-btn>
+        </x-nav-button>
       </td>
     </tr>
     <tr>
@@ -245,45 +254,45 @@ export default defineComponent({
           ms
         </div>
         <div>
-          <q-btn flat :icon="mdiArrowDown" round>
+          <x-nav-button :icon="mdiArrowDown">
             <x-tooltip>Down tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowDown" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowDown">
             <x-tooltip direction="down">Down tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowDown" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowDown">
             <x-tooltip direction="down-left">Down-left tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowDown" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowDown">
             <x-tooltip direction="down-right">Down-right tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowLeft" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowLeft">
             <x-tooltip direction="left">Left tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowLeft" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowLeft">
             <x-tooltip direction="left-down">Left-down tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowLeft" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowLeft">
             <x-tooltip direction="left-up">Left-up tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowRight" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowRight">
             <x-tooltip direction="right">Right tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowRight" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowRight">
             <x-tooltip direction="right-down">Right-down tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowRight" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowRight">
             <x-tooltip direction="right-up">Right-up tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowUp" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowUp">
             <x-tooltip direction="up">Up tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowUp" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowUp">
             <x-tooltip direction="up-left">Up-left tooltip</x-tooltip>
-          </q-btn>
-          <q-btn flat :icon="mdiArrowUp" round>
+          </x-nav-button>
+          <x-nav-button :icon="mdiArrowUp">
             <x-tooltip direction="up-right">Up-right tooltip</x-tooltip>
-          </q-btn>
+          </x-nav-button>
         </div>
       </td>
     </tr>
