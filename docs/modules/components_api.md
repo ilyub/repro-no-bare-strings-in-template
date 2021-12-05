@@ -11,6 +11,7 @@
 ### Interfaces
 
 - [PropOptions](../interfaces/components_api.PropOptions.md)
+- [PropOptionsBoolean](../interfaces/components_api.PropOptionsBoolean.md)
 - [PropOptionsDefault](../interfaces/components_api.PropOptionsDefault.md)
 - [PropOptionsRequired](../interfaces/components_api.PropOptionsRequired.md)
 
@@ -18,6 +19,7 @@
 
 - [injectRequire](components_api.md#injectrequire)
 - [propOptions](components_api.md#propoptions)
+- [propOptionsBoolean](components_api.md#propoptionsboolean)
 - [propOptionsDefault](components_api.md#propoptionsdefault)
 - [propOptionsRequired](components_api.md#propoptionsrequired)
 
@@ -70,6 +72,26 @@ Creates Vue property.
 #### Returns
 
 [`PropOptions`](../interfaces/components_api.PropOptions.md)<`T`\>
+
+Vue property.
+
+___
+
+### propOptionsBoolean
+
+▸ **propOptionsBoolean**(`defVal?`): [`PropOptionsBoolean`](../interfaces/components_api.PropOptionsBoolean.md)
+
+Creates Vue property.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `defVal` | `boolean` | `false` | Default value. |
+
+#### Returns
+
+[`PropOptionsBoolean`](../interfaces/components_api.PropOptionsBoolean.md)
 
 Vue property.
 

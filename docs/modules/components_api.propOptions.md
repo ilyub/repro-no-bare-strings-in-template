@@ -8,10 +8,35 @@
 
 ### Variables
 
+- [boolean](components_api.propOptions.md#boolean)
 - [default](components_api.propOptions.md#default)
 - [required](components_api.propOptions.md#required)
 
 ## Variables
+
+### boolean
+
+• **boolean**: (`defVal`: `boolean`) => [`PropOptionsBoolean`](../interfaces/components_api.PropOptionsBoolean.md)
+
+#### Type declaration
+
+▸ (`defVal?`): [`PropOptionsBoolean`](../interfaces/components_api.PropOptionsBoolean.md)
+
+Creates Vue property.
+
+##### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `defVal` | `boolean` | `false` | Default value. |
+
+##### Returns
+
+[`PropOptionsBoolean`](../interfaces/components_api.PropOptionsBoolean.md)
+
+Vue property.
+
+___
 
 ### default
 
