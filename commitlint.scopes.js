@@ -12,5 +12,6 @@ module.exports = [
   "quasar",
   "routes",
   "testUtils",
+  "typings",
   "vueStorage"
 ];
