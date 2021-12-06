@@ -8,7 +8,6 @@ import {
 import * as fn from "@skylib/functions/es/function";
 import * as o from "@skylib/functions/es/object";
 
-// eslint-disable-next-line import/no-relative-parent-imports
 import { routes } from "../routes";
 
 // eslint-disable-next-line import/no-default-export
