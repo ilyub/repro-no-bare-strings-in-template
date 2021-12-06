@@ -1,6 +1,6 @@
 <script lang="ts">
-import * as _ from "lodash-es";
 import lunr from "lunr";
+import naturalCompare from "natural-compare";
 import { computed, defineComponent } from "vue";
 
 import * as a from "@skylib/functions/es/array";
@@ -17,21 +17,24 @@ export default defineComponent({
     searchString: propOptions.default(is.string, "")
   },
   setup(props) {
+    const sortedItems = computed(() =>
+      a.sort(props.items, (item1, item2) =>
+        naturalCompare(item1.title, item2.title)
+      )
+    );
+
     const filteredItems = computed(() => {
       if (props.searchString.length) {
         const result = searchIndex.value.search(props.searchString);
 
         const refs = new Set(a.fromIterable(result).map(item => item.ref));
 
-        return _.sortBy(
-          props.items.map(item => {
-            return { ...item, show: item.show && refs.has(item.id) };
-          }),
-          "title"
-        );
+        return sortedItems.value.map(item => {
+          return { ...item, show: item.show && refs.has(item.id) };
+        });
       }
 
-      return _.sortBy(props.items, "title");
+      return sortedItems.value;
     });
 
     const searchIndex = computed(() =>

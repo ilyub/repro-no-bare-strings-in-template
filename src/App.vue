@@ -99,17 +99,17 @@ export default defineComponent({
           {
             id: "section2",
             show: showSection2.value,
-            title: "Bbb ccc"
+            title: "Section 2 bbb ccc"
           },
           {
             id: "section1",
             show: showSection1.value,
-            title: "Aaa bbb"
+            title: "Section 1 aaa bbb"
           },
           {
             id: "section3",
             show: showSection3.value,
-            title: "Ccc ddd"
+            title: "Section 12 ccc ddd"
           }
         ]
       ),
@@ -159,7 +159,7 @@ export default defineComponent({
         >
           <template #section2>Section 2</template>
           <template #section1>Section 1</template>
-          <template #section3>Section 3</template>
+          <template #section3>Section 12</template>
         </x-group>
       </td>
     </tr>
