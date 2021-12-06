@@ -97,14 +97,14 @@ export default defineComponent({
       groupItems: computed(
         (): GroupItems => [
           {
-            id: "section1",
-            show: showSection1.value,
-            title: "Aaa bbb"
-          },
-          {
             id: "section2",
             show: showSection2.value,
             title: "Bbb ccc"
+          },
+          {
+            id: "section1",
+            show: showSection1.value,
+            title: "Aaa bbb"
           },
           {
             id: "section3",
@@ -157,8 +157,8 @@ export default defineComponent({
           not-found-label="No results found"
           :search-string="searchString"
         >
-          <template #section1>Section 1</template>
           <template #section2>Section 2</template>
+          <template #section1>Section 1</template>
           <template #section3>Section 3</template>
         </x-group>
       </td>

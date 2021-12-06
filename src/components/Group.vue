@@ -1,4 +1,5 @@
 <script lang="ts">
+import * as _ from "lodash-es";
 import lunr from "lunr";
 import { computed, defineComponent } from "vue";
 
@@ -22,12 +23,15 @@ export default defineComponent({
 
         const refs = new Set(a.fromIterable(result).map(item => item.ref));
 
-        return props.items.map(item => {
-          return { ...item, show: item.show && refs.has(item.id) };
-        });
+        return _.sortBy(
+          props.items.map(item => {
+            return { ...item, show: item.show && refs.has(item.id) };
+          }),
+          "title"
+        );
       }
 
-      return props.items;
+      return _.sortBy(props.items, "title");
     });
 
     const searchIndex = computed(() =>
