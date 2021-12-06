@@ -97,7 +97,7 @@
   "peerDependencies": {
     "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.6",
     "@skylib/facades": "^0.1.6",
-    "@skylib/framework": "^0.1.4",
+    "@skylib/framework": "^0.1.5",
     "@skylib/functions": "^0.1.8",
     "@skylib/typescript-types": "^0.1.1",
     "@types/lodash": "^4.14.177",
