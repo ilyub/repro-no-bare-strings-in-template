@@ -1,11 +1,10 @@
-import { Definitions } from "@skylib/framework/es/facade-implementations/lang/dictionary";
+import {
+  Definitions,
+  pluralReduce
+} from "@skylib/framework/es/facade-implementations/lang/dictionary";
 
 export const en = new Definitions({
-  pluralReduce(count): number {
-    count = Math.abs(count);
-
-    return count === 1 ? 1 : 2;
-  },
+  pluralReduce,
   wordForms: {},
   words: {
     SampleWord: "Sample word"
