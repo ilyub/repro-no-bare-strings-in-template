@@ -48,7 +48,7 @@ module.exports = configure(ctx => {
     framework: {
       config: {},
       iconSet: "svg-mdi-v6",
-      plugins: []
+      plugins: ["Notify"]
     },
     pwa: {
       chainWebpackCustomSW() {
