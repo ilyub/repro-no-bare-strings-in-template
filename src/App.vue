@@ -38,6 +38,10 @@ export default defineComponent({
 
     const language = ref<LocaleName>("en-US");
 
+    const resizerShow = ref(true);
+
+    const resizerWidth = ref(100);
+
     const searchString = ref("");
 
     const selectOptions: SelectOptions<SelectValue> = [
@@ -125,6 +129,8 @@ export default defineComponent({
       mdiArrowUp,
       mdiClose,
       mdiPen,
+      resizerShow,
+      resizerWidth,
       searchString,
       selectOptions,
       selectValue,
@@ -232,6 +238,25 @@ export default defineComponent({
       </td>
     </tr>
     <tr>
+      <td>Resizer</td>
+      <td>
+        <q-toggle v-model="resizerShow" />
+        <div
+          class="q-mt-sm resizer"
+          :style="{
+            width: `${resizerWidth}px`
+          }"
+        >
+          <x-resizer
+            v-show="resizerShow"
+            v-model="resizerWidth"
+            :max="200"
+            :min="10"
+          />
+        </div>
+      </td>
+    </tr>
+    <tr>
       <td>Select</td>
       <td>
         <x-select v-model="selectValue" :options="selectOptions" />
@@ -307,5 +332,11 @@ table {
     border: 1px solid $grey-4;
     padding: 10px;
   }
+}
+
+.resizer {
+  position: relative;
+  background: blue;
+  height: 50px;
 }
 </style>

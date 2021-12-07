@@ -16,6 +16,7 @@ import Knob from "./components/Knob.vue";
 import LanguagePicker from "./components/LanguagePicker.vue";
 import MenuItem from "./components/MenuItem.vue";
 import NavButton from "./components/NavButton.vue";
+import Resizer from "./components/Resizer.vue";
 import Select from "./components/Select.vue";
 import Tooltip from "./components/Tooltip.vue";
 
@@ -28,6 +29,7 @@ export const plugin: VuePlugin = {
     app.component(LanguagePicker.name, LanguagePicker);
     app.component(MenuItem.name, MenuItem);
     app.component(NavButton.name, NavButton);
+    app.component(Resizer.name, Resizer);
     app.component(Select.name, Select);
     app.component(Tooltip.name, Tooltip);
   }
