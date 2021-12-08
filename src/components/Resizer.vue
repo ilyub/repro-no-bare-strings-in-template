@@ -3,6 +3,7 @@ import { defineComponent } from "vue";
 
 import * as assert from "@skylib/functions/es/assertions";
 import * as is from "@skylib/functions/es/guards";
+import type { numberU } from "@skylib/functions/es/types/core";
 
 import { propOptions } from "./api";
 
@@ -42,15 +43,27 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
+    let initialValue: numberU = undefined;
+
     return {
       handlePan(event: unknown): void {
         assert.byGuard(event, isResizerEvent);
 
-        if (event.isFinal)
-          emit(
-            "update:model-value",
-            limitMin(limitMax(props.modelValue + event.offset.x))
-          );
+        if (event.isFirst) initialValue = props.modelValue;
+
+        assert.not.empty(initialValue);
+
+        const value = initialValue + event.offset.x;
+
+        const limitedValue = limitMin(limitMax(value));
+
+        emit("update:model-value", limitedValue);
+
+        if (event.isFinal) {
+          // Do not set cursor
+        } else
+          document.documentElement.style.cursor =
+            limitedValue === value ? "ew-resize" : "not-allowed";
       }
     };
 
