@@ -71,12 +71,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 div {
-  cursor: col-resize;
   position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 5px;
   z-index: 1000;
+  top: 0;
+  right: 0;
+  width: 5px;
   height: 100%;
+  cursor: ew-resize;
 }
 </style>
