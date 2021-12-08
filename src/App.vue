@@ -40,7 +40,7 @@ export default defineComponent({
 
     const resizerShow = ref(true);
 
-    const resizerWidth = ref(100);
+    const resizerWidth = ref(200);
 
     const searchString = ref("");
 
@@ -147,6 +147,9 @@ export default defineComponent({
 
 <template>
   <table class="q-ma-lg q-mb-xl">
+    <caption>
+      Sample components
+    </caption>
     <tr>
       <td>Group</td>
       <td>
@@ -250,8 +253,8 @@ export default defineComponent({
           <x-resizer
             v-show="resizerShow"
             v-model="resizerWidth"
-            :max="200"
-            :min="10"
+            :max="300"
+            :min="100"
           />
         </div>
       </td>
@@ -329,14 +332,14 @@ table {
   border-collapse: collapse;
 
   td {
-    border: 1px solid $grey-4;
     padding: 10px;
+    border: 1px solid $grey-4;
   }
 }
 
 .resizer {
   position: relative;
-  background: blue;
   height: 50px;
+  background: blue;
 }
 </style>
