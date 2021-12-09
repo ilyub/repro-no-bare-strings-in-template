@@ -173,6 +173,12 @@ export default defineComponent({
       </td>
     </tr>
     <tr>
+      <td>Icon picker</td>
+      <td>
+        <x-icon-picker />
+      </td>
+    </tr>
+    <tr>
       <td>Input</td>
       <td>
         <x-input v-model="inputValue1" />

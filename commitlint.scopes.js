@@ -1,6 +1,7 @@
 module.exports = [
   "App",
   "Group",
+  "IconPicker",
   "Input",
   "Knob",
   "LanguagePicker",

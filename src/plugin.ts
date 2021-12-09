@@ -11,6 +11,7 @@ import "./components/Select.extras";
 // eslint-disable-next-line import/no-unassigned-import
 import "./components/Tooltip.extras";
 import Group from "./components/Group.vue";
+import IconPicker from "./components/IconPicker.vue";
 import Input from "./components/Input.vue";
 import Knob from "./components/Knob.vue";
 import LanguagePicker from "./components/LanguagePicker.vue";
@@ -24,6 +25,7 @@ import Tooltip from "./components/Tooltip.vue";
 export const plugin: VuePlugin = {
   install(app) {
     app.component(Group.name, Group);
+    app.component(IconPicker.name, IconPicker);
     app.component(Input.name, Input);
     app.component(Knob.name, Knob);
     app.component(LanguagePicker.name, LanguagePicker);

@@ -1,6 +1,12 @@
 import { Notify } from "quasar";
 import { boot } from "quasar/wrappers";
-import { mdiClose } from "@mdi/js";
+import {
+  mdiChevronLeft,
+  mdiChevronRight,
+  mdiClose,
+  mdiImageEdit,
+  mdiImageEditOutline
+} from "@mdi/js";
 
 import { icons } from "@skylib/facades/es/icons";
 import { lang } from "@skylib/facades/es/lang";
@@ -21,7 +27,11 @@ export default boot(({ app }) => {
 
   {
     icons.setImplementation({
-      close: mdiClose
+      chevronLeft: mdiChevronLeft,
+      chevronRight: mdiChevronRight,
+      close: mdiClose,
+      imageEdit: mdiImageEdit,
+      imageEditOutline: mdiImageEditOutline
     });
   }
 

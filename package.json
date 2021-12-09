@@ -96,16 +96,21 @@
     "vue-router": "^4.0.12"
   },
   "peerDependencies": {
+    "@mdi/js-2": "npm:@mdi/js@^6.5.95",
     "@quasar/quasar-app-extension-testing-unit-jest": "^3.0.0-alpha.6",
     "@skylib/facades": "^0.1.6",
     "@skylib/framework": "^0.1.5",
     "@skylib/functions": "^0.1.8",
     "@skylib/typescript-types": "^0.1.1",
+    "@types/lodash": "^4.14.178",
+    "@types/lodash-es": "^4.17.5",
     "@types/lunr": "^2.3.4",
     "@types/natural-compare": "^1.4.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "lunr": "^2.3.9",
     "natural-compare": "^1.4.0",
-    "vue": "^3.2.23"
+    "vue": "^3.2.24"
   },
   "engines": {
     "node": ">=14.0.0",
